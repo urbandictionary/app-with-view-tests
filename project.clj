@@ -16,6 +16,7 @@
             "externs" ["do" "clean"
                        ["run" "-m" "externs"]]
             "rebuild-modules" ["run" "-m" "user" "--rebuild-modules"]
+            "test" ["with-profile" "test" "cljsbuild" "test"]
             "prod-build" ^{:doc "Recompile code with prod profile."}
             ["externs"
              ["with-profile" "prod" "cljsbuild" "once" "main"]]}
@@ -40,4 +41,11 @@
                                                          :parallel-build     true
                                                          :optimize-constants true
                                                          :optimizations :advanced
-                                                         :closure-defines {"goog.DEBUG" false}}}]}}})
+                                                         :closure-defines {"goog.DEBUG" false}}}]}}
+             :test {:cljsbuild {:builds {:test {:source-paths ["test" "src"]
+                                                :compiler     {:output-to "__tests__/tests.js"
+                                                               :main app-with-view-tests.tests-runner
+                                                               :target :nodejs
+                                                               :output-dir "target"
+                                                               :optimizations :none}}}
+                                :test-commands {"test" ["yarn" "jest" "__tests__/tests.js"]}}}})
