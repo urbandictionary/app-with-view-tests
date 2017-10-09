@@ -1,5 +1,6 @@
 (ns app-with-view-tests.core-test
-  (:require [app-with-view-tests.core :as core]
+  (:require app-with-view-tests.mocks
+            [app-with-view-tests.core :as core]
             [cljs.test :refer [deftest is]]))
 
 ;; (defn example-test []

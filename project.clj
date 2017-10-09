@@ -42,10 +42,10 @@
                                                          :optimize-constants true
                                                          :optimizations :advanced
                                                          :closure-defines {"goog.DEBUG" false}}}]}}
-             :test {:cljsbuild {:builds {:test {:source-paths ["test" "src"]
+             :test {:cljsbuild {:builds {:test {:source-paths ["src" "test"]
                                                 :compiler     {:output-to "__tests__/tests.js"
                                                                :main app-with-view-tests.tests-runner
                                                                :target :nodejs
                                                                :output-dir "target"
-                                                               :optimizations :none}}}
+                                                               :optimizations :advanced}}}
                                 :test-commands {"test" ["yarn" "jest" "__tests__/tests.js"]}}}})
